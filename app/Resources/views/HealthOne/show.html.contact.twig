@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{%  block title %}Contact - HealthOne{%  endblock %}
+    {%  block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
+        <script src="{{ asset('js/jquery.js')}}"></script>
+        <script src="{{ asset('js/popper.min.js') }}"></script>
+        <script src="{{ asset('css/style.css') }}"></script>
+    {%  endblock %}
+{% block body %}
+<div class="jumbotron text-center" style="margin-bottom:0;padding: 5px 5px 5px 5px; background-color: white">
+    <a href="index.php"><img src="Images/Logo.png" class="mx-auto d-block" style="width:200px"></a>
+</div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="javascript:history.back()">Terug</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('index') }}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container border" style="margin-top:30px">
+    <div class="col-sm">
+        <h1 class="text-center">Contactgegevens:</h1>
+        <div class="row">
+            <div class="col-3">
+                <h5 class="mb-3">Straat:</h5>
+                <h5 class="mb-3">Postcode:</h5>
+                <h5 class="mb-3">Telefoonnummer:</h5>
+                <h5>E-mailadres:</h5>
+            </div>
+            <div class="col-5">
+                <p>Verzinselkade 13</p>
+                <p>2300 AK Leiden</p>
+                <p>071 1547391</p>
+                <p>Waaromleesjedit@HealthOne.com</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+{%  endblock %}

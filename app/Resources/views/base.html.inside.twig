@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% block menu %}
+    <div class="list-group">
+        <span><img width="300px" src="Images/Logo.png" class="mx-auto d-block"></span>
+        <a href="{{ path('patientenlijst') }}" class="list-group-item {% block active1 %}{% endblock %}"><i class="far fa-address-card"></i><span> Patiënteninformatie</span></a>
+        <a href="Artsenlijst.php" class="list-group-item {% block active2 %}{% endblock %}"><i class="fas fa-user-md"></i><span> Artsenlijst</span></a>
+        <a href="Medicijnenlijst.php" class="list-group-item {% block active3 %}{% endblock %}"><i class="fas fa-pills "></i><span> Medicijnenlijst</span></a>
+        <a href="{{ path('index') }}" class="list-group-item"><i class="fas fa-sign-out-alt"></i><span> Uitloggen</span></a>
+        <div class="jumbotron">
+            <p class="text-center">Gebruiker:</p>
+            <p class="text-center"> Verzekeringsmedewerker</p>
+        </div>
+    </div>
+{% endblock %}
+    {% block dataTableScript %}
+    {% endblock %}
+    <div class="col-sm-8">
+{% block content %}
+{% endblock %}
+    </div>
+{% endblock %}

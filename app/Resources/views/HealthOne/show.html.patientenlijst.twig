@@ -1,0 +1,48 @@
+{% extends 'base.html.inside.twig' %}
+{%  block title %}Patiëntenlijst - HealthOne{%  endblock %}
+    {%  block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/3.2.1/bootstrap.min.css')}}">
+        <script src="{{ asset('js/jquery.js')}}"></script>
+        <script src="{{ asset('js/popper.min.js') }}"></script>
+        <script src="{{ asset('css/style.css') }}"></script>
+        <link rel="stylesheet" href="css/all.min.css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
+        <script type="text/javascript" src="DataTables/datatables.min.js"></script>
+    {%  endblock %}
+    {% block active1 %}active
+    {%  endblock %}
+{% block dataTableScript %}
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable( {
+            scrollY: 600,
+            "info": false,
+            scrollCollapse: true,
+            "paging": false,
+            "oLanguage": {
+                "sSearch": "Filter"
+            },
+            "columnDefs": [
+                { "orderable": false, "targets": 4 }
+            ]
+        } );
+    } );
+</script>
+{%  endblock %}
+{% block content %}
+    <h1>Patiëntenlijst</h1>
+    <table class="table table-hover" id="myTable">
+        <thead>
+        <tr>
+            <th>Voornaam<i class="fas fa-sort"></th>
+            <th>T.v.<i class="fas fa-sort"></th>
+            <th>Achternaam<i class="fas fa-sort"></th>
+            <th>Pasnummer<i class="fas fa-sort"></th>
+            <th>Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+{% endblock %}
