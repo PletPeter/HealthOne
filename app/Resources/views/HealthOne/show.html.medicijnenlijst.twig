@@ -10,7 +10,7 @@
         <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
         <script type="text/javascript" src="DataTables/datatables.min.js"></script>
     {%  endblock %}
-    {% block active2 %}active
+    {% block active3 %}active
     {%  endblock %}
 {% block dataTableScript %}
     <script>
@@ -24,25 +24,27 @@
                     "sSearch": "Filter"
                 },
                 "columnDefs": [
-                    { "orderable": false, "targets": 4 }
+                    { "orderable": false, "targets": 3 }
                 ]
             } );
         } );
     </script>
 {%  endblock %}
 {% block content %}
-    <h1>Artsenlijst</h1>
-    <table class="table  table-hover" id="myTable">
-        <thead>
-        <tr>
-            <th>Voornaam<i class="fas fa-sort"></i></th>
-            <th>T.v.<i class="fas fa-sort"></i></th>
-            <th>Achternaam<i class="fas fa-sort"></i></th>
-            <th>Specialisatie<i class="fas fa-sort"></i></th>
-            <th>Edit</th>
-        </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+    <div class="col-sm-8">
+        <h1>Medicijnenlijst</h1>
+        <table class="table table-hover" id="myTable">
+            <thead>
+            <tr>
+                <th>Naam<i class="fas fa-sort"></i></th>
+                <th>Beschrijving<i class="fas fa-sort"></i></th>
+                <th>Bijwerkingen<i class="fas fa-sort"></i></th>
+                <th>Bewerk</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <a href="Medicijnnieuw.php"><button class="btn-success" style="margin-top: 4px"><i class="fas fa-plus"></i> Nieuw medicijn</button></a>
+    </div>
 {% endblock %}

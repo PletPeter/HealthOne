@@ -43,4 +43,22 @@ class HealthController extends Controller
             'name' => 'Patientenlijst - HealthOne'
         ]);
     }
+    /**
+     * @Route("/artsenlijst", name="artsenlijst")
+     */
+    public function showArtsenlijst()
+    {
+        return $this->render('HealthOne/show.html.artsenlijst.twig', [
+            'name' => 'Artsenlijst - HealthOne'
+        ]);
+    }
+    /**
+     * @Route("/medicijnenlijst", name="medicijnenlijst")
+     */
+    public function showMedicijnenlijst()
+    {
+        return $this->render('HealthOne/show.html.medicijnenlijst.twig', [
+            'name' => 'Medicijnenlijst - HealthOne'
+        ]);
+    }
 }
