@@ -37,9 +37,13 @@ class HealthController extends Controller
     /**
      * @Route("/patientenlijst", name="patientenlijst")
      */
-    public function showPatientlijst()
+    public function listAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        $patienten = $em->getRepository('AppBundle\Entity\Patienten')
+            ->findAll();
         return $this->render('HealthOne/show.html.patientenlijst.twig', [
+            'patienten' => $patienten,
             'name' => 'Patientenlijst - HealthOne'
         ]);
     }
@@ -61,4 +65,6 @@ class HealthController extends Controller
             'name' => 'Medicijnenlijst - HealthOne'
         ]);
     }
+
+
 }
