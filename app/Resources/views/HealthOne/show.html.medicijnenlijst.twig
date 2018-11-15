@@ -31,7 +31,6 @@
     </script>
 {%  endblock %}
 {% block content %}
-    <div class="col-sm-8">
         <h1>Medicijnenlijst</h1>
         <table class="table table-hover" id="myTable">
             <thead>
@@ -42,6 +41,14 @@
                 <th>Bewerk</th>
             </tr>
             </thead>
+            {% for medicijn in medicijnen %}
+                <tr>
+                    <td>{{ medicijn.medicijnnaam }}</td>
+                    <td>{{ medicijn.beschrijving }}</td>
+                    <td>{{ medicijn.bijwerkingen }}</td>
+                    <td><a href=Medicijndetails.php?ID={{ medicijn.id }} style='color: blue'><i class="fas fa-info"></i></a><a href=Medicijnbewerk.php?ID={{ medicijn.id }} style='color: green; margin-left: 3px'><i class="fas fa-edit"></i></a><a href='medicijnlijst.php?ID={{ medicijn.id }}' style='color: red; margin-left: 4px'><i class="fas fa-ban"></i></a></td>
+                </tr>
+            {% endfor %}
             <tbody>
             </tbody>
         </table>

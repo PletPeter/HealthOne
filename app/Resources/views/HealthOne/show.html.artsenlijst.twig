@@ -42,6 +42,15 @@
             <th>Edit</th>
         </tr>
         </thead>
+        {% for arts in artsen %}
+            <tr>
+                <td>{{ arts.voornaam }}</td>
+                <td>{{ arts.tussenvoegsel }}</td>
+                <td>{{ arts.achternaam }}</td>
+                <td>{{ arts.specialisatie }}</td>
+                <td><a href=Patientdetails.php?ID={{ arts.id }} style='color: blue'><i class="fas fa-info"></i></a><a href=Patientbewerk.php?ID={{ arts.id }} style='color: green; margin-left: 3px'><i class="fas fa-edit"></i></a><a href='Patientenlijst.php?ID={{ arts.id }}' style='color: red; margin-left: 4px'><i class="fas fa-ban"></i></a></td>
+            </tr>
+        {% endfor %}
         <tbody>
         </tbody>
     </table>

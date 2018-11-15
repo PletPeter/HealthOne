@@ -52,7 +52,11 @@ class HealthController extends Controller
      */
     public function showArtsenlijst()
     {
+        $em = $this->getDoctrine()->getManager();
+        $artsen = $em->getRepository('AppBundle\Entity\Artsen')
+            ->findAll();
         return $this->render('HealthOne/show.html.artsenlijst.twig', [
+            'artsen' => $artsen,
             'name' => 'Artsenlijst - HealthOne'
         ]);
     }
@@ -61,7 +65,11 @@ class HealthController extends Controller
      */
     public function showMedicijnenlijst()
     {
+        $em = $this->getDoctrine()->getManager();
+        $patienten = $em->getRepository('AppBundle\Entity\Medicijnen')
+            ->findAll();
         return $this->render('HealthOne/show.html.medicijnenlijst.twig', [
+            'medicijnen' => $patienten,
             'name' => 'Medicijnenlijst - HealthOne'
         ]);
     }
