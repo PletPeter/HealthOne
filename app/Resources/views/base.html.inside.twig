@@ -1,4 +1,13 @@
 {% extends 'base.html.twig' %}
+{%  block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/3.2.1/bootstrap.min.css')}}">
+    <script src="{{ asset('js/jquery.min.js')}}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <link rel="stylesheet" href="css/all.min.css"/>
+    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
+    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+{%  endblock %}
 {% block body %}
 {% block menu %}
     <div class="list-group">

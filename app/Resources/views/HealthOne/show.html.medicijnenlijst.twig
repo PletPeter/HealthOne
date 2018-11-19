@@ -1,15 +1,5 @@
 {% extends 'base.html.inside.twig' %}
 {%  block title %}{{ name }}{%  endblock %}
-    {%  block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('css/3.2.1/bootstrap.min.css')}}">
-        <script src="{{ asset('js/jquery.js')}}"></script>
-        <script src="{{ asset('js/popper.min.js') }}"></script>
-        <script src="{{ asset('css/style.css') }}"></script>
-        <link rel="stylesheet" href="css/all.min.css"/>
-        <link href="css/style.css" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
-        <script type="text/javascript" src="DataTables/datatables.min.js"></script>
-    {%  endblock %}
     {% block active3 %}active
     {%  endblock %}
 {% block dataTableScript %}
@@ -49,8 +39,6 @@
                     <td><a href=Medicijndetails.php?ID={{ medicijn.id }} style='color: blue'><i class="fas fa-info"></i></a><a href=Medicijnbewerk.php?ID={{ medicijn.id }} style='color: green; margin-left: 3px'><i class="fas fa-edit"></i></a><a href='medicijnlijst.php?ID={{ medicijn.id }}' style='color: red; margin-left: 4px'><i class="fas fa-ban"></i></a></td>
                 </tr>
             {% endfor %}
-            <tbody>
-            </tbody>
         </table>
         <a href="Medicijnnieuw.php"><button class="btn-success" style="margin-top: 4px"><i class="fas fa-plus"></i> Nieuw medicijn</button></a>
     </div>
