@@ -74,5 +74,15 @@ class HealthController extends Controller
         ]);
     }
 
+    /**
+     * @Route("/testformulier", name="testformulier")
+     */
+    public function showTestformulier()
+    {
+        return $this->render('HealthOne/show.html.testformulier.twig', [
+            'name' => 'Testformulier - HealthOne'
+        ]);
+    }
+
 
 }
