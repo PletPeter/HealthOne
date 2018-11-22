@@ -9,6 +9,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -28,6 +29,7 @@ class Medicijnen
     private $medicijnnaam;
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
      */
     private $beschrijving;
     /**

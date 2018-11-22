@@ -9,9 +9,11 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Medicijnen;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 class HealthController extends Controller
 {
@@ -75,12 +77,50 @@ class HealthController extends Controller
     }
 
     /**
-     * @Route("/testformulier", name="testformulier")
+     * @Route("/Medicijnform", name="Medicijnform")
      */
-    public function showTestformulier()
+    public function newAction(Request $request)
     {
-        return $this->render('HealthOne/show.html.testformulier.twig', [
-            'name' => 'Testformulier - HealthOne'
+        $form=$this->createForm(FormMaker::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $afdeling = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($afdeling);
+
+            $em->flush();
+            $this->addFlash('success', 'Medicijn created!');
+            return $this->redirectToRoute('medicijnenlijst');
+        }
+
+        return $this->render('HealthOne/new.html.twig', [
+            'afdelingForm'=>$form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/delete/{ID}", name="medicijnendelete")
+     */
+    public function deleteMedicijn($ID)
+    {
+        $product = $this->getDoctrine()
+            ->getRepository(Medicijnen::class)
+            ->find($ID);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'No medicijn found for id ' . $ID
+            );
+        }
+        $em = $this->getDoctrine()->getManager();
+        $patienten = $em->getRepository('AppBundle\Entity\Medicijnen')
+            ->findAll();
+        return $this->render('HealthOne/show.html.medicijnenlijst.twig', [
+            'medicijnen' => $patienten,
+            'name' => 'Medicijnenlijst - HealthOne'
         ]);
     }
 
