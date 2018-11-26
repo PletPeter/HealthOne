@@ -11,7 +11,7 @@
 {% block body %}
 {% block menu %}
     <div class="list-group">
-        <span><img width="300px" src="{{ asset('Images/Logo.png') }}" class="mx-auto d-block"></span>
+        <span><img width="300px" src="{{ asset('Images/Logo.jpg') }}" class="mx-auto d-block"></span>
         <a href="{{ path('patientenlijst') }}" class="list-group-item {% block active1 %}{% endblock %}"><i class="far fa-address-card"></i><span> Patiënteninformatie</span></a>
         <a href="{{ path('artsenlijst') }}" class="list-group-item {% block active2 %}{% endblock %}"><i class="fas fa-user-md"></i><span> Artsenlijst</span></a>
         <a href="{{ path('medicijnenlijst') }}" class="list-group-item {% block active3 %}{% endblock %}"><i class="fas fa-pills "></i><span> Medicijnenlijst</span></a>
