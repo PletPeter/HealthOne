@@ -12,12 +12,18 @@ web_profiler:
     intercept_redirects: false
 
 monolog:
+    channels: [Nederland]
     handlers:
+        security:
+            level: debug
+            type: stream
+            path: '%kernel.logs_dir%/security.log'
+            channels: [Nederland]
         main:
             type: stream
             path: '%kernel.logs_dir%/%kernel.environment%.log'
             level: debug
-            channels: ['!event']
+            channels: ['!event', '!Nederland']
         console:
             type: console
             process_psr_3_messages: false

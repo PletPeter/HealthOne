@@ -10,6 +10,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Medicijnen;
+use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,6 +24,9 @@ class HealthController extends Controller
  */
     public function showIndex()
     {
+        $logger=$this->get('monolog.logger.Nederland');
+        $logger->info("DE DUITSERS KOMEN");
+
         return $this->render('base.html.twig', [
             'name' => 'Homepagina - HealthOne'
         ]);
