@@ -21,7 +21,7 @@
 </script>
 {%  endblock %}
 {% block content %}
-    <h1>Patiëntenlijst</h1>
+    <h1>Lessenlijst</h1>
     <table class="table table-hover" id="myTable">
         <thead>
         <tr>
@@ -32,15 +32,6 @@
             <th>Edit</th>
         </tr>
         </thead>
-            {% for patient in patienten %}
-        <tr>
-            <td>{{ patient.voornaam }}</td>
-            <td>{{ patient.tussenvoegsel }}</td>
-            <td>{{ patient.achternaam }}</td>
-            <td>{{ patient.pasnummer }}</td>
-            <td><a href=Patientdetails.php?ID={{ patient.id }} style='color: blue'><i class="fas fa-info"></i></a><a href=Patientbewerk.php?ID={{ patient.id }} style='color: green; margin-left: 3px'><i class="fas fa-edit"></i></a><a href='Patientenlijst.php?ID={{ patient.id }}' style='color: red; margin-left: 4px'><i class="fas fa-ban"></i></a></td>
-        </tr>
-            {% endfor %}
     </table>
     </div>
 {% endblock %}
