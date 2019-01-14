@@ -39,6 +39,22 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(type="json_array")
      */
     private $roles = array();
+    /**
+     * @ORM\Column(type="string", length=25)
+     */
+    private $naam;
+    /**
+     * @ORM\Column(type="decimal", precision=8, scale=2)
+     */
+    private $salaris;
+    /**
+     * @ORM\OneToMany(targetEntity="Les", mappedBy="users")
+     */
+    private $les;
+    public function __construct()
+    {
+        $this->les = new ArrayCollection();
+    }
 
     public function serialize()
     {
@@ -92,5 +108,72 @@ class User implements UserInterface, \Serializable
     {
         // TODO: Implement eraseCredentials() method.
     }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNaam()
+    {
+        return $this->naam;
+    }
+
+    /**
+     * @param mixed $naam
+     */
+    public function setNaam($naam)
+    {
+        $this->naam = $naam;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSalaris()
+    {
+        return $this->salaris;
+    }
+
+    /**
+     * @param mixed $salaris
+     */
+    public function setSalaris($salaris)
+    {
+        $this->salaris = $salaris;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLes()
+    {
+        return $this->les;
+    }
+
+    /**
+     * @param mixed $les
+     */
+    public function setLes($les)
+    {
+        $this->les = $les;
+    }
+
+
+
 
 }

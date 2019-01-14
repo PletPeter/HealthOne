@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -49,7 +50,32 @@ class Les
      */
     private $personenmax;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="les")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $users;
 
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * @param mixed $users
+     */
+    public function setUsers($users)
+    {
+        $this->users = $users;
+    }
     /**
      * Get id
      *
@@ -155,5 +181,6 @@ class Les
     {
         return $this->personenmax;
     }
+
 }
 
