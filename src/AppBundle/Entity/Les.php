@@ -54,27 +54,67 @@ class Les
      * @ORM\ManyToOne(targetEntity="User", inversedBy="les")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $users;
+    private $user;
+    /**
+     * @ORM\OneToMany(targetEntity="Deelname", mappedBy="les")
+     */
+    private $deelnames;
+    /**
+     * @ORM\ManyToOne(targetEntity="Training", inversedBy="lessen")
+     * @ORM\JoinColumn(name="training_id", referencedColumnName="id")
+     */
+    private $training;
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
+        $this->deelnames = new ArrayCollection();
     }
 
     /**
      * @return mixed
      */
-    public function getUsers()
+    public function getTraining()
     {
-        return $this->users;
+        return $this->training;
     }
 
     /**
-     * @param mixed $users
+     * @param mixed $training
      */
-    public function setUsers($users)
+    public function setTraining($training)
     {
-        $this->users = $users;
+        $this->training = $training;
+    }
+    /**
+     * @return mixed
+     */
+    public function getDeelnames()
+    {
+        return $this->deelnames;
+    }
+
+    /**
+     * @param mixed $deelnames
+     */
+    public function setDeelnames($deelnames)
+    {
+        $this->deelnames = $deelnames;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
     /**
      * Get id
@@ -181,6 +221,8 @@ class Les
     {
         return $this->personenmax;
     }
+
+
 
 }
 

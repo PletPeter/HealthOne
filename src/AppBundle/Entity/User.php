@@ -8,11 +8,12 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Table(name="users")
+ * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository");
  */
 class User implements UserInterface, \Serializable
@@ -48,13 +49,19 @@ class User implements UserInterface, \Serializable
      */
     private $salaris;
     /**
-     * @ORM\OneToMany(targetEntity="Les", mappedBy="users")
+     * @ORM\OneToMany(targetEntity="Les", mappedBy="user")
      */
     private $les;
+    /**
+     * @ORM\OneToMany(targetEntity="Deelname", mappedBy="user")
+     */
+    private $deelname;
     public function __construct()
     {
         $this->les = new ArrayCollection();
+        $this->deelname = new ArrayCollection();
     }
+
 
     public function serialize()
     {
@@ -173,7 +180,20 @@ class User implements UserInterface, \Serializable
         $this->les = $les;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getDeelname()
+    {
+        return $this->deelname;
+    }
 
-
+    /**
+     * @param mixed $deelname
+     */
+    public function setDeelname($deelname)
+    {
+        $this->deelname = $deelname;
+    }
 
 }
