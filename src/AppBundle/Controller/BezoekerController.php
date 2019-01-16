@@ -55,5 +55,22 @@ class BezoekerController extends Controller
         ]);
     }
 
+    /**
+     * @Route("/registreer", name="registreer")
+     */
+
+    public function showRegistreer(Request $request,AuthenticationUtils $authUtils)
+    {
+        $error = $authUtils->getLastAuthenticationError();
+
+        $lastUsername = $authUtils->getLastUsername();
+
+
+        return $this->render('registreer.html.twig', [
+            'last_username' => $lastUsername,
+            'error'         => $error,
+        ]);
+    }
+
 
 }

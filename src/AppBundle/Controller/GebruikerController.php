@@ -36,11 +36,9 @@ class GebruikerController extends Controller
         if(!$les){
             throw  $this->createNotFoundException('User does not exist');
         }
-        $user = $entitymanager->getRepository(\AppBundle\Entity\User::class)->findOneBy(
-            array('id' => 1)
-        );
+        $user = $entitymanager->getRepository(\AppBundle\Entity\User::class)->find($userId);
 
-        $les->setUsers($user);
+        $les->setUser($user);
         $entitymanager->flush();
         return $this->redirectToRoute('lessenlijst');
     }
