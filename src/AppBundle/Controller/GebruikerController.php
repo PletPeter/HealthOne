@@ -22,7 +22,8 @@ class GebruikerController extends Controller
     public function listAction()
     {
         return $this->render('Gebruiker/show.html.lessenlijst.twig', [
-            'name' => 'lessenlijst'
+            'name' => 'lessenlijst',
+            'gebruiker' => $this->getUser()
         ]);
     }
 
