@@ -37,6 +37,15 @@ class BezoekerController extends Controller
             'name' => 'Contact - Trainingfactory'
         ]);
     }
+    /**
+     * @Route("/gedragsregels", name="gedragsregels")
+     */
+    public function showGedragsregels()
+    {
+        return $this->render('show.html.gedragsregels.twig', [
+            'name' => 'Gedragsregels - Trainingfactory'
+        ]);
+    }
 
     /**
      * @Route("/login", name="login")
