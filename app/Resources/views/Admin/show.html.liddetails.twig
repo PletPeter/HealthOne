@@ -1,0 +1,25 @@
+{% extends 'base.html.admin.twig' %}
+{%  block title %}{{ name }}{%  endblock %}
+    {% block active1 %}active
+    {%  endblock %}
+{% block dataTableScript %}
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable( {
+            scrollY: 600,
+            "info": false,
+            scrollCollapse: true,
+            "paging": false,
+            "oLanguage": {
+                "sSearch": "Filter"
+            },
+            "columnDefs": [
+                { "orderable": false, "targets": 4 }
+            ]
+        } );
+    } );
+</script>
+{%  endblock %}
+{% block content %}
+
+{% endblock %}
