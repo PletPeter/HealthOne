@@ -11,6 +11,7 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table(name="user")
@@ -31,10 +32,14 @@ class User implements UserInterface, \Serializable
     private $username;
 
     /**
-     * @ORM\Column(type="string", length=64)
-     *
+     * @ORM\Column(type="string", length=64))
      */
     private $password;
+    /**
+     * @Assert\Length(max=4096)
+     * @Assert\NotBlank(message="vul wachtwoord in")
+     */
+    private $plainPassword;
 
     /**
      * @ORM\Column(type="json_array")
@@ -45,7 +50,7 @@ class User implements UserInterface, \Serializable
      */
     private $naam;
     /**
-     * @ORM\Column(type="decimal", precision=8, scale=2)
+     * @ORM\Column(type="decimal", precision=8, scale=2, nullable=true)
      */
     private $salaris;
     /**
@@ -90,6 +95,16 @@ class User implements UserInterface, \Serializable
     {
         $this->roles = $roles;
     }
+
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+
+
 
     public function getPassword()
     {
@@ -150,6 +165,7 @@ class User implements UserInterface, \Serializable
 
     /**
      * @return mixed
+     * @
      */
     public function getSalaris()
     {
@@ -194,6 +210,22 @@ class User implements UserInterface, \Serializable
     public function setDeelname($deelname)
     {
         $this->deelname = $deelname;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
     }
 
 }

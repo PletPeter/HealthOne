@@ -32,10 +32,10 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface
     public function onAuthenticationSuccess(Request $request, TokenInterface $token)
     {
         if ($this->authorizationChecker->isGranted('ROLE_ADMIN')){
-            $response = new RedirectResponse($this->router->generate('contact'));
+            $response = new RedirectResponse($this->router->generate('admin'));
         }
         elseif ($this->authorizationChecker->isGranted('ROLE_USER')){
-            $response = new RedirectResponse($this->router->generate('contact'));
+            $response = new RedirectResponse($this->router->generate('lessenlijst'));
         }
         return $response;
     }
