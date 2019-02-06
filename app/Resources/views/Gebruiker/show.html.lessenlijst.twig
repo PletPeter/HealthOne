@@ -25,13 +25,36 @@
     <table class="table table-hover" id="myTable">
         <thead>
         <tr>
-            <th>Voornaam<i class="fas fa-sort"></th>
-            <th>T.v.<i class="fas fa-sort"></th>
-            <th>Achternaam<i class="fas fa-sort"></th>
-            <th>Pasnummer<i class="fas fa-sort"></th>
-            <th>Edit</th>
+            <th>Lestype<i class="fas fa-sort"></th>
+            <th>Locatie<i class="fas fa-sort"></th>
+            <th>Trainer<i class="fas fa-sort"></th>
+            <th>Tijd<i class="fas fa-sort"></th>
+            <th>Datum<i class="fas fa-sort"></th>
+            <th>Aanmelden</th>
         </tr>
         </thead>
+        {% for les in besLessen %}
+        <tr>
+            <td>{{ les.training.naam }}</td>
+            <td>{{ les.locatie }}</td>
+            <td>{{ les.user.naam }}</td>
+            <td>{{ les.tijd }}</td>
+            <td>{{ les.datum }}</td>
+            <td>
+                <a href="{{ path('lessenlijst') }}/{{ les.id }}"><i style="color: blue" class="fas fa-arrow-right"></i></a></td>
+        </tr>
+        {% endfor %}
+        {% for deelname in gesLessen %}
+        <tr>
+            <td>{{ deelname.les.training.naam }}</td>
+            <td>{{ deelname.les.locatie }}</td>
+            <td>{{ deelname.les.user.naam }}</td>
+            <td>{{ deelname.les.tijd }}</td>
+            <td>{{ deelname.les.datum }}</td>
+            <td>
+                <p style="color: red">INGESCHREVEN</p></td>
+        </tr>
+        {% endfor %}
     </table>
     </div>
 {% endblock %}
