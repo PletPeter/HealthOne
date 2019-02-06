@@ -24,15 +24,18 @@ class GebruikerController extends Controller
      */
     public function listAction()
     {
-        $repository = $this->getDoctrine()->getRepository(Les::class);
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Deelname');
 
-        $lessen = $repository->findAll();
-        $deelnames = $repository->find();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $besLessen = $repository->getBeschikbareDeelnames($user->getId());
+        $gesLessen = $repository->getIngeschrevenDeelnames($user->getId());
 
         return $this->render('Gebruiker/show.html.lessenlijst.twig', [
             'name' => 'lessenlijst',
             'gebruiker' => $this->getUser(),
-            'lessen' => $lessen
+            'besLessen' => $besLessen,
+            'gesLessen' => $gesLessen
         ]);
     }
 
@@ -44,26 +47,34 @@ class GebruikerController extends Controller
         $entitymanager = $this->getDoctrine()->getManager();
         $lesRepo = $this->getDoctrine()->getRepository(Les::class);
         $les = $lesRepo->find($id);
-        $userID = $this->getUser();
-        if( $this->getDoctrine()->getRepository(Deelname::class)->find($les, $userID)){
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        if( $this->getDoctrine()->getRepository(Deelname::class)->find($les, $user)){
 
         }
         else {
             $deelname = new Deelname();
             $deelname->setBetaald(false);
             $deelname->setLes($les);
-            $deelname->setUser($userID);
+            $deelname->setUser($user);
 
             $entitymanager->persist($deelname);
             $entitymanager->flush();
         }
+
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Deelname');
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $besLessen = $repository->getBeschikbareDeelnames($user->getId());
+        $gesLessen = $repository->getIngeschrevenDeelnames($user->getId());
 
         $lessen = $lesRepo->findAll();
 
         return $this->render('Gebruiker/show.html.lessenlijst.twig', [
             'name' => 'lessenlijst',
             'gebruiker' => $this->getUser(),
-            'lessen' => $lessen
+            'besLessen' => $besLessen,
+            'gesLessen' => $gesLessen
         ]);
     }
     /**
