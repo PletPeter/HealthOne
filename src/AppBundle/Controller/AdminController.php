@@ -13,16 +13,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class InstructeurController extends Controller
+class AdminController extends Controller
 {
     /**
-     * @Route("/Instructeur/lessenlijst", name="lessenlijstInst")
+     * @Route("/Admin/ledenlijst", name="ledenlijst")
      */
 
     public function showLessenlijst()
     {
-        return $this->render('HealthOne/show.html.contact.twig', [
-            'name' => 'Contact - HealthOne'
+        return $this->render(':Admin:show.html.ledenlijst.twig', [
+            'name' => 'Ledenlijst - TrainingFactory'
         ]);
     }
 

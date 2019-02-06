@@ -1,31 +1,11 @@
 {% extends 'base.html.navbar.twig' %}
 {% block content %}
 
-    {%  if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
 
-    <form action="{{ path('login') }}" method="post">
-        <table>
-            <tr>
-                <td> gebruikersnaam</td>
-                <td>
-                    <input type="text" autocomplete="off" id="username" placeholder="naam pls" name="_username" value="{{ last_username }}">
-                </td>
-            </tr>
-            <tr>
-                <td>wachtwoord:</td>
-                <td>
-                    <input type="password" autocomplete="off" id="password" name="_password" placeholder="wachtwoord pls" required="required">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                </td>
-                <td>
-                    <input type="submit" value="inloggen"><input type="reset" value="reset">
-                </td>
-            </tr>
-        </table>
-    </form>
+
+    <h3>Registreren</h3>
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
 {% endblock %}
