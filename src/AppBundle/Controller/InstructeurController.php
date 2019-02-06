@@ -13,38 +13,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-use AppBundle\Entity\Les;
-
 class InstructeurController extends Controller
 {
     /**
-     * @Route("/Instructeur/lessenlijst", name="lessenlijstInst")
+     * @Route("/admin", name="admin")
      */
 
-    public function showLessenlijst()
+    public function showAdmin()
     {
-        $repository = $this->getDoctrine()->getRepository('AppBundle:Les');
-        $lessen = $repository->findAll();
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-
-        $insLessen = $repository->getLesByInstructor($user);
-        $insNLessen = $repository->getLesNotByInstructor($user);
-
-        return $this->render('Instructeur/show.html.lessenlijst.twig', [
-            'name' => 'Lessenlijst - Trainingfactory',
-            'gebruiker' => $this->getUser(),
-            'lessen' => $lessen,
-            'inslessen' => $insLessen,
-            'insnlessen' => $insNLessen
+        return $this->render('HealthOne/show.html.contact.twig', [
+            'name' => 'Contact - HealthOne'
         ]);
-    }
-
-    /**
-     * @Route("/Instructeur/lesdetails", name="lesdetails")
-     */
-    public function showLesDetails()
-    {
-        $this->redirectToRoute('lessenlijstInst');
     }
 
 

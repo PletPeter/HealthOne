@@ -8,9 +8,6 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Les;
-use AppBundle\Entity\Deelname;
-
 use AppBundle\AppBundle;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -24,57 +21,23 @@ class GebruikerController extends Controller
      */
     public function listAction()
     {
-        $repository = $this->getDoctrine()->getRepository('AppBundle:Deelname');
-
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-
-        $besLessen = $repository->getBeschikbareDeelnames($user->getId());
-        $gesLessen = $repository->getIngeschrevenDeelnames($user->getId());
-
         return $this->render('Gebruiker/show.html.lessenlijst.twig', [
             'name' => 'lessenlijst',
-            'gebruiker' => $this->getUser(),
-            'besLessen' => $besLessen,
-            'gesLessen' => $gesLessen
+            'gebruiker' => $this->getUser()
         ]);
     }
 
-    /**
-     * @Route("/gebruiker/lessenlijst/{id}")
-     */
-    public function SignupAction($id)
-    {
-        $entitymanager = $this->getDoctrine()->getManager();
-        $lesRepo = $this->getDoctrine()->getRepository(Les::class);
-        $les = $lesRepo->find($id);
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-        if( $this->getDoctrine()->getRepository(Deelname::class)->find($les, $user)){
-
-        }
-        else {
-            $deelname = new Deelname();
-            $deelname->setBetaald(false);
-            $deelname->setLes($les);
-            $deelname->setUser($user);
-
-            $entitymanager->persist($deelname);
-            $entitymanager->flush();
-        }
-
-
-        return $this->redirectToRoute('lessenlijst');
-    }
     /**
      * @Route("/gebruiker/test/geeftestles/{userId}", name="geeftestles")
      */
     public function giveTestLes($userId){
         $entitymanager = $this->getDoctrine()->getManager();
-        $les = $entitymanager->getRepository(Les::class)->find(1);
+        $les = $entitymanager->getRepository(\AppBundle\Entity\Les::class)->find(1);
 
         if(!$les){
             throw  $this->createNotFoundException('User does not exist');
         }
-        $user = $entitymanager->getRepository(User::class)->find($userId);
+        $user = $entitymanager->getRepository(\AppBundle\Entity\User::class)->find($userId);
 
         $les->setUser($user);
         $entitymanager->flush();
