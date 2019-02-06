@@ -21,5 +21,37 @@
 </script>
 {%  endblock %}
 {% block content %}
+    <div class="col-sm-8">
+        <h1 class="h1">Lesdetails</h1>
+        <div class="col-sm-12">
+            <a href="{{ path('lessenlijst') }}"><button class="btn-danger"><i class="fas fa-arrow-left"></i>Terug</button></a>
+            <a href="{{ path('lessenlijst') }}"><button class="btn-success"><i class="fas fa-edit"></i>Bewerk</button></a>
+        </div>
+        <div class="col-sm-6">
+            <h2 class="h2">Informatie</h2>
+            <table class="table table-hover">
+                <tbody>
+                <tr>
+                    <th class="col-sm-4">ID</th><td>{{ les.id }}</td>
+                </tr>
+                <tr>
+                    <th class="col-sm-4">Soort</th><td>{{ les.training.naam }}</td>
+                </tr>
+                <tr>
+                    <th class="col-sm-4">Tijd</th><td>{{ les.tijd }}</td>
+                </tr>
+                <tr>
+                    <th class="col-sm-4">Datum</th><td>{{ les.datum }}</td>
+                </tr>
+                <tr>
+                    <th class="col-sm-4">Locatie</th><td>{{ les.locatie }}</td>
+                </tr>
+                <tr>
+                    <th class="col-sm-4">PersonenMax</th><td>{{ les.personenmax }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
+    </div>
 {% endblock %}

@@ -23,7 +23,7 @@ class InstructeurController extends Controller
 
     public function showLessenlijst()
     {
-        $repository = $this->getDoctrine()->getRepository('AppBundle:Les');
+        $repository = $this->getDoctrine()->getRepository('AppBundle:les');
         $lessen = $repository->findAll();
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
@@ -38,13 +38,29 @@ class InstructeurController extends Controller
             'insnlessen' => $insNLessen
         ]);
     }
-
     /**
      * @Route("/Instructeur/lesdetails", name="lesdetails")
      */
-    public function showLesDetails()
+    public function showLesRedirect()
     {
-        $this->redirectToRoute('lessenlijstInst');
+        return $this->redirectToRoute('lessenlijstInst');
+    }
+    /**
+     * @Route("/Instructeur/lesdetails/{id}")
+     */
+    public function showLesDetails($id)
+    {
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $rep = $this->getDoctrine()->getRepository('AppBundle:Les');
+        $les = $rep->find($id);
+
+        return $this->render('Instructeur/show.html.lesdetails.twig', [
+           'name' => 'Lesdetails - Trainingfactory',
+           'gebruiker' => $this->getUser(),
+           'les' => $les
+        ]);
     }
 
 

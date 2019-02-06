@@ -1,4 +1,4 @@
-{% extends 'base.html.inside.twig' %}
+{% extends 'Instructeur/base.html.instructeur.twig' %}
 {%  block title %}{{ name }}{%  endblock %}
     {% block active1 %}active
     {%  endblock %}
@@ -41,7 +41,9 @@
                 <td>{{ les.tijd }}</td>
                 <td>{{ les.datum }}</td>
                 <td>
-                    <a href="{{ path('lesdetails') }}/{{ les.id }}"><i style="color: blue" class="fas fa-arrow-right"></i></a></td>
+                    <a href="{{ path('lesdetails')}}/{{ les.id }}"><i style="color: blue" class="fas fa-info"></i></a>
+                    <a href="{{ path('lesdetails')}}/{{ les.id }}"><i style="color: green;margin-left: 4px" class="fas fa-edit"></i></a>
+                    <a href="{{ path('lesdetails')}}/{{ les.id }}"><i style="color: red;margin-left: 4px" class="fas fa-trash-alt"></i></a></td>
             </tr>
         {% endfor %}
         {% for les in insnlessen %}

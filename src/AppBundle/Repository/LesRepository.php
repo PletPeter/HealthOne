@@ -30,4 +30,13 @@ class LesRepository extends \Doctrine\ORM\EntityRepository
         $query->setParameter('insid',$insId);
         return $query->getResult();
     }
+//    public function getLesById($lesId){
+//        $em=$this->getEntityManager();
+//        $les=$em->getRepository(Les::class)->findOneBy(['id' => $lesId]);
+//
+//        $query=$em->createQuery("SELECT a FROM FROM AppBundle:Les a WHERE :lesid = a.id");
+//
+//        $query->setParameter('lesid', $lesId);
+//        return $query->getResult();
+//    }
 }
