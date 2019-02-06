@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Les;
+
 /**
  * LesRepository
  *
@@ -10,4 +12,22 @@ namespace AppBundle\Repository;
  */
 class LesRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getLesByInstructor($insId){
+        $em=$this->getEntityManager();
+        $member = $em->getRepository(Les::class)->findOneBy(['id' => $insId]);
+
+        $query=$em->createQuery("SELECT a FROM AppBundle:Les a WHERE :insid = a.user");
+
+        $query->setParameter('insid',$insId);
+        return $query->getResult();
+    }
+    public function getLesNotByInstructor($insId){
+        $em=$this->getEntityManager();
+        $member = $em->getRepository(Les::class)->findOneBy(['id' => $insId]);
+
+        $query=$em->createQuery("SELECT a FROM AppBundle:Les a WHERE :insid != a.user");
+
+        $query->setParameter('insid',$insId);
+        return $query->getResult();
+    }
 }

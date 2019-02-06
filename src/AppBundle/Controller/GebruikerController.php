@@ -61,21 +61,8 @@ class GebruikerController extends Controller
             $entitymanager->flush();
         }
 
-        $repository = $this->getDoctrine()->getRepository('AppBundle:Deelname');
 
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-
-        $besLessen = $repository->getBeschikbareDeelnames($user->getId());
-        $gesLessen = $repository->getIngeschrevenDeelnames($user->getId());
-
-        $lessen = $lesRepo->findAll();
-
-        return $this->render('Gebruiker/show.html.lessenlijst.twig', [
-            'name' => 'lessenlijst',
-            'gebruiker' => $this->getUser(),
-            'besLessen' => $besLessen,
-            'gesLessen' => $gesLessen
-        ]);
+        return $this->redirectToRoute('lessenlijst');
     }
     /**
      * @Route("/gebruiker/test/geeftestles/{userId}", name="geeftestles")
