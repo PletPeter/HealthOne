@@ -25,6 +25,10 @@ class Training
      */
     private $id;
     /**
+     * @ORM\Column(type="text", length=26)
+     */
+    private $naam;
+    /**
      * @ORM\Column(type="text", length=255)
      */
     private $descriptie;
@@ -124,6 +128,23 @@ class Training
     {
         $this->lessen = $lessen;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getNaam()
+    {
+        return $this->naam;
+    }
+
+    /**
+     * @param mixed $naam
+     */
+    public function setNaam($naam)
+    {
+        $this->naam = $naam;
+    }
+
 
 
 }

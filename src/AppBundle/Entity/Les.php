@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 /**
  * Les
@@ -143,11 +144,11 @@ class Les
     /**
      * Get tijd
      *
-     * @return \DateTime
+     * @return \String
      */
     public function getTijd()
     {
-        return $this->tijd;
+        return $this->tijd->format('G:i');
     }
 
     /**
@@ -167,11 +168,11 @@ class Les
     /**
      * Get datum
      *
-     * @return \DateTime
+     * @return \String
      */
     public function getDatum()
     {
-        return $this->datum;
+        return $this->datum->format('Y-m-d');
     }
 
     /**
