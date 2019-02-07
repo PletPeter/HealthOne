@@ -24,8 +24,6 @@ class Les
     private $id;
 
     /**
-     * @var \DateTime
-     *
      * @ORM\Column(name="tijd", type="time")
      */
     private $tijd;
@@ -148,7 +146,7 @@ class Les
      */
     public function getTijd()
     {
-        return $this->tijd->format('G:i');
+        return $this->tijd;
     }
 
     /**
@@ -172,7 +170,7 @@ class Les
      */
     public function getDatum()
     {
-        return $this->datum->format('Y-m-d');
+        return $this->datum;
     }
 
     /**

@@ -19,8 +19,11 @@ class AdminController extends Controller
      * @Route("/Admin/ledenlijst", name="ledenlijst")
      */
 
-    public function showLessenlijst()
+    public function showLedenlijst()
     {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $rep = $this->getDoctrine()->getRepository('AppBundle:User');
         return $this->render(':Admin:show.html.ledenlijst.twig', [
             'name' => 'Ledenlijst - TrainingFactory'
         ]);

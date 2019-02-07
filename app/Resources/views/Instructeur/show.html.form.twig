@@ -1,7 +1,5 @@
-{% extends 'base.html.inside.twig' %}
-{%  block title %}{{ name }}{%  endblock %}
-    {% block active1 %}active
-    {%  endblock %}
+{% extends 'Instructeur/base.html.instructeur.twig' %}
+{%  block title %}TrainingFactory - Edit les{%  endblock %}
 {% block dataTableScript %}
 <script>
     $(document).ready( function () {
@@ -21,7 +19,9 @@
 </script>
 {%  endblock %}
 {% block content %}
-    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    <h1>Edit les</h1>
+    {{ form_start(form) }}
     {{ form_widget(form) }}
+    <button type="submit" class="btn-success btn">Submit</button>
     {{ form_end(form) }}
 {% endblock %}

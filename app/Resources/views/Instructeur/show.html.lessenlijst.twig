@@ -38,12 +38,12 @@
                 <td>{{ les.training.naam }}</td>
                 <td>{{ les.locatie }}</td>
                 <td>jij</td>
-                <td>{{ les.tijd }}</td>
-                <td>{{ les.datum }}</td>
+                <td>{{ les.tijd|date("H:i") }}</td>
+                <td>{{ les.datum|date("d-m-Y") }}</td>
                 <td>
                     <a href="{{ path('lesdetails')}}/{{ les.id }}"><i style="color: blue" class="fas fa-info"></i></a>
-                    <a href="{{ path('lesdetails')}}/{{ les.id }}"><i style="color: green;margin-left: 4px" class="fas fa-edit"></i></a>
-                    <a href="{{ path('lesdetails')}}/{{ les.id }}"><i style="color: red;margin-left: 4px" class="fas fa-trash-alt"></i></a></td>
+                    <a href="{{ path('lesedit') }}/{{ les.id }}"><i style="color: green;margin-left: 4px" class="fas fa-edit"></i></a>
+                    <a href="{{ path('lesdelete', {'id' : les.id})}}"><i style="color: red;margin-left: 4px" class="fas fa-trash-alt"></i></a></td>
             </tr>
         {% endfor %}
         {% for les in insnlessen %}
@@ -51,8 +51,8 @@
                 <td>{{ les.training.naam }}</td>
                 <td>{{ les.locatie }}</td>
                 <td>{{ les.user.naam }}</td>
-                <td>{{ les.tijd }}</td>
-                <td>{{ les.datum }}</td>
+                <td>{{ les.tijd|date("H:i") }}</td>
+                <td>{{ les.datum|date("d-m-Y") }}</td>
                 <td></td>
             </tr>
         {% endfor %}
